@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Machine</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+                rel="stylesheet">
+
+</head>
+
+<body bgcolor="E6C4FD">
+
+        <div id="head">
+                <div id="logo">
+                        <h1>
+                                <span style="color: black;font-family:Montserrat;">Machine</span>
+                                <span style="font-size: medium; color: blueviolet;font-family:Montserrat;">Alpha</span>
+                        </h1>
+                </div>
+                <div id="menu">
+                        <select id="select_base">
+                                <option value="#">Selecione a Base Inicial</option>
+                                <option value="1">Binário</option>
+                                <option value="2">Octal</option>
+                                <option value="3">Hexadecimal</option>
+                                <option value="4">Decimal</option>
+                        </select> <br><br>
+                        <input id="demo1" type="text" placeholder="Digite o valor">
+                </div>
+        </div>
+        <br><br>
+
+        <h3 style="font-family:Montserrat;">Converter para:</h3>
+
+
+        <input onclick="aparecer_octal()" type="checkbox" style="font-family:Montserrat;"><b
+                style="font-family:Montserrat;">Octal</b>
+        <br>
+        <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(0, 0, 0); width: 15%; height: 40px; font-weight: 500;"
+                id="demo2"></div>
+
+        <br><br>
+
+        <input onclick="aparecer_hexa()" type="checkbox" style="font-family:Montserrat;"><b
+                style="font-family:Montserrat;">Hexadecimal</b>
+        <br>
+        <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(7, 7, 7); width: 15%; height: 40px; font-weight: 500;"
+                id="demo3"></div>
+
+        <br><br>
+
+        <input onclick="aparecer_bin()" type="checkbox" style="font-family:Montserrat;"><b
+                style="font-family:Montserrat;">Binário</b>
+        <br>
+        <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(5, 5, 5); width: 60%; height: 50px; font-weight: 500;"
+                id="demo4"></div>
+
+        <br><br>
+
+        <button onclick="converter()" style="font-family:Montserrat; border-radius: 5px;">Converter</button>
+
+        <script>
+                function converter() {
+                        var dec = select_base.value
+                        if (dec == '4') {
+                                var decimal = Number(demo1.value);
+                                var octal = decimal.toString(8);
+                                var hexadecimal = decimal.toString(16);
+                                let binaria = decimal.toString(2);
+
+                                console.log(decimal);
+                                console.log(octal);
+                                console.log(hexadecimal);
+                                console.log(binaria);
+
+                                document.getElementById("demo1").innerHTML = ` ${decimal}`;
+                                document.getElementById("demo2").innerHTML = ` ${octal}`;
+                                document.getElementById("demo3").innerHTML = ` ${hexadecimal}`;
+                                document.getElementById("demo4").innerHTML = ` ${binaria}`;
+
+                        }
+                }
+                function converter() {
+                        var dec = select_base.value
+                        if (dec == '3') {
+                                var hexadecimal = Number(demo1.value);
+                                var octal = hexadecimal.toString(8);
+                                var hexadecimal = hexadecimal.toString(16);
+                                let binaria = hexadecimal.toString(2);
+
+                                console.log(decimal);
+                                console.log(octal);
+                                console.log(hexadecimal);
+                                console.log(binaria);
+
+                                document.getElementById("demo1").innerHTML = ` ${decimal}`;
+                                document.getElementById("demo2").innerHTML = ` ${octal}`;
+                                document.getElementById("demo3").innerHTML = ` ${hexadecimal}`;
+                                document.getElementById("demo4").innerHTML = ` ${binaria}`;
+
+                        }
+                }
+
+                function aparecer_bin() {
+                        demo4.style.display = 'block'
+                }
+
+                function aparecer_hexa() {
+                        demo3.style.display = 'block'
+                }
+
+                function aparecer_octal() {
+                        demo2.style.display = 'block'
+                }
+                document.bgColor = "E6C4FD";
+        </script>
+</body>
+
+</html>
