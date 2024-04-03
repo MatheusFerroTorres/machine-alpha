@@ -2,123 +2,111 @@
 <html lang="pt-br">
 
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Machine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine</title>
+    <style>
+        body {
+            background-color: #E6C4FD;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-                rel="stylesheet">
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
+        .calculator h1 {
+            text-align: center;
+        }
+
+        select,
+        input[type="text"],
+        button {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .result-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
-<body bgcolor="E6C4FD">
+<body>
 
-        <div id="head">
-                <div id="logo">
-                        <h1>
-                                <span style="color: black;font-family:Montserrat;">Machine</span>
-                                <span style="font-size: medium; color: blueviolet;font-family:Montserrat;">Alpha</span>
-                        </h1>
-                </div>
-                <div id="menu">
-                        <select id="select_base">
-                                <option value="#">Selecione a Base Inicial</option>
-                                <option value="1">Binário</option>
-                                <option value="2">Octal</option>
-                                <option value="3">Hexadecimal</option>
-                                <option value="4">Decimal</option>
-                        </select> <br><br>
-                        <input id="demo1" type="text" placeholder="Digite o valor">
-                </div>
+    <div class="calculator">
+        <h1>Machine Alpha</h1>
+        <div>
+            <label for="select_base">Selecione a Base Inicial:</label>
+            <select id="select_base">
+                <option value="2">Binário</option>
+                <option value="8">Octal</option>
+                <option value="16">Hexadecimal</option>
+                <option value="10">Decimal</option>
+            </select>
+            <input id="input_value" type="text" placeholder="Digite o valor">
         </div>
-        <br><br>
 
-        <h3 style="font-family:Montserrat;">Converter para:</h3>
+        <h3>Converter para:</h3>
 
+        <input type="checkbox" id="chk_decimal" value="10"><label for="chk_decimal">Decimal</label><br>
+        <div class="result-container" id="result_decimal"></div>
 
-        <input onclick="aparecer_octal()" type="checkbox" style="font-family:Montserrat;"><b
-                style="font-family:Montserrat;">Octal</b>
+        <input type="checkbox" id="chk_octal" value="8"><label for="chk_octal">Octal</label><br>
+        <div class="result-container" id="result_octal"></div>
+
+        <input type="checkbox" id="chk_hexadecimal" value="16"><label for="chk_hexadecimal">Hexadecimal</label><br>
+        <div class="result-container" id="result_hexadecimal"></div>
+
+        <input type="checkbox" id="chk_binario" value="2"><label for="chk_binario">Binário</label><br>
+        <div class="result-container" id="result_binario"></div>
+
         <br>
-        <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(0, 0, 0); width: 15%; height: 40px; font-weight: 500;"
-                id="demo2"></div>
 
-        <br><br>
+        <button id="btn_converter">Converter</button>
+        <button id="btn_limpar">Limpar</button>
+    </div>
 
-        <input onclick="aparecer_hexa()" type="checkbox" style="font-family:Montserrat;"><b
-                style="font-family:Montserrat;">Hexadecimal</b>
-        <br>
-        <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(7, 7, 7); width: 15%; height: 40px; font-weight: 500;"
-                id="demo3"></div>
-
-        <br><br>
-
-        <input onclick="aparecer_bin()" type="checkbox" style="font-family:Montserrat;"><b
-                style="font-family:Montserrat;">Binário</b>
-        <br>
-        <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(5, 5, 5); width: 60%; height: 50px; font-weight: 500;"
-                id="demo4"></div>
-
-        <br><br>
-
-        <button onclick="converter()" style="font-family:Montserrat; border-radius: 5px;">Converter</button>
-
-        <script>
-                function converter() {
-                        var dec = select_base.value
-                        if (dec == '4') {
-                                var decimal = Number(demo1.value);
-                                var octal = decimal.toString(8);
-                                var hexadecimal = decimal.toString(16);
-                                let binaria = decimal.toString(2);
-
-                                console.log(decimal);
-                                console.log(octal);
-                                console.log(hexadecimal);
-                                console.log(binaria);
-
-                                document.getElementById("demo1").innerHTML = ` ${decimal}`;
-                                document.getElementById("demo2").innerHTML = ` ${octal}`;
-                                document.getElementById("demo3").innerHTML = ` ${hexadecimal}`;
-                                document.getElementById("demo4").innerHTML = ` ${binaria}`;
-
-                        }
-                }
-                function converter() {
-                        var dec = select_base.value
-                        if (dec == '3') {
-                                var hexadecimal = Number(demo1.value);
-                                var octal = hexadecimal.toString(8);
-                                var hexadecimal = hexadecimal.toString(16);
-                                let binaria = hexadecimal.toString(2);
-
-                                console.log(decimal);
-                                console.log(octal);
-                                console.log(hexadecimal);
-                                console.log(binaria);
-
-                                document.getElementById("demo1").innerHTML = ` ${decimal}`;
-                                document.getElementById("demo2").innerHTML = ` ${octal}`;
-                                document.getElementById("demo3").innerHTML = ` ${hexadecimal}`;
-                                document.getElementById("demo4").innerHTML = ` ${binaria}`;
-
-                        }
-                }
-
-                function aparecer_bin() {
-                        demo4.style.display = 'block'
-                }
-
-                function aparecer_hexa() {
-                        demo3.style.display = 'block'
-                }
-
-                function aparecer_octal() {
-                        demo2.style.display = 'block'
-                }
-                document.bgColor = "E6C4FD";
-        </script>
+    <script>
+        document.getElementById("btn_converter").addEventListener("click", function () {
+            var base = parseInt(document.getElementById("select_base").value);
+            var value = document.getElementById("input_value").value.trim();
+            var decimal = parseInt(value, base);
+            if (!isNaN(decimal)) {
+                var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+                checkboxes.forEach(function (checkbox) {
+                    var resultContainer = document.getElementById("result_" + checkbox.id.split("_")[1]);
+                    resultContainer.style.display = 'block';
+                    var hexValue = decimal.toString(parseInt(checkbox.value)).toUpperCase();
+                    resultContainer.innerHTML = checkbox.labels[0].innerText + ": " + (checkbox.id === "chk_hexadecimal" ? hexValue : decimal.toString(parseInt(checkbox.value)));
+                });
+            } else {
+                alert("Por favor, insira um valor válido.");
+            }
+        });
+        document.getElementById("btn_limpar").addEventListener("click", function () {
+            document.getElementById("input_value").value = "";
+            var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+            checkboxes.forEach(function (checkbox) {
+                var resultContainer = document.getElementById("result_" + checkbox.id.split("_")[1]);
+                resultContainer.style.display = 'none';
+                resultContainer.innerHTML = "";
+            });
+        });
+    </script>
 </body>
 
 </html>
